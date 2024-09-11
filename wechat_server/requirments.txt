@@ -1,0 +1,7 @@
+ntchat
+flask
+requests
+selenium
+python-dotenv
+gevent
+Pillow

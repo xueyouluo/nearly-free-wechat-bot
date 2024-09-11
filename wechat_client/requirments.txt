@@ -1,0 +1,11 @@
+fastapi[all]
+python-dotenv
+zhipuai
+tiktoken
+numpy
+xmltodict
+arxiv
+lxml
+requests
+beautifulsoup4
+chromadb==0.4.24
