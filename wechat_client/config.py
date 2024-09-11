@@ -1,9 +1,6 @@
 # 公众号上限
 MAX_PUBLIC_NUM = 100
 
-# 超级用户, 一般为wxid_xxxxxxx
-SUPER_USER = 'wxid_xxxxxxx'
-
 # 机器人的名字
 AT_SLEF_NAME= '@MIND'
 # Article Config

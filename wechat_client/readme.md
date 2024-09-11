@@ -16,11 +16,11 @@ pip install -r requirements.txt
 ```
 ZHIPU_KEY=你的智谱申请的key
 WECHAT_SERVER=你的微信服务器地址
+SUPER_USER=你可以接受系统消息的微信号，不是部署成机器人的微信号
 TG_USER_PWD=天工搜索的账号和密码，支持联网搜索获取答案，如果有多个请用,分割，账号密码使用:号分割，如user1:pwd1,user2:pwd2
 ```
 
 额外的配置信息在config.py：
-- 在config里面修改你的SUPER_USER，这个是你的主要的管理账号，系统消息会发送到这个账号
 - 还有其他一些自己看了，酌情配置
 
 ## 3. 运行

@@ -1,6 +1,5 @@
 import json
-
-from config import SUPER_USER
+import os
 from database.sql_database import (
     get_latest_user_article,get_user_token_usage_by_time_offset_and_case,
     get_total_token_usage_by_user_and_time_offset, get_user_status,
@@ -13,6 +12,7 @@ from utils.misc import get_now
 from utils.httpx_client import send_super_user,send_text,accept_friend,search_contacts,get_room_detail
 
 under_development = '🚧该功能正在开发中...'
+SUPER_USER = os.getenv('SUPER_USER','')
 
 def attend_manager(user_id, room, msg):
     if msg == '打卡功能':
