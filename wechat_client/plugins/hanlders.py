@@ -15,7 +15,6 @@ from plugins.pub_mail import push_manage,pub_manage
 from plugins.article import article_manage,verify_url
 from utils.tiangong import search_tiangong
 from plugins.qa import qa_plugin_manager
-from projects.project_manager import project_manager
 from const.enums import UseCase
 from prompt import get_default_system
 from database.vector_db import insert_wx_article_chunks_to_vector_db
@@ -257,13 +256,6 @@ async def on_recv_text_msg(message: Message):
     # 权限管理
     # 在其他判断之前
     ret = await manager_plugin(from_wxid,room,msg)
-    if ret:
-        await send_fn(ret)
-        return
-
-
-    # 其他定制化需求，先走project判断
-    ret = project_manager(from_wxid,msg,room,message)
     if ret:
         await send_fn(ret)
         return
