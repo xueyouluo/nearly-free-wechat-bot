@@ -875,6 +875,44 @@ def upsert_pub_config(user_id, keywords, push_time):
         cursor.execute(sql, list(doc.values()))
         conn.commit()
 
+def get_last_user_kimi_token(user_id):
+    with sqlite3.connect(SQL_DB_NAME) as conn:
+        cursor = conn.cursor()
+        # 执行SELECT语句以检查表中是否存在具有特定URL的数据
+        cursor.execute(f"SELECT * FROM {SQL_KIMI_TOKEN_TABLE} WHERE user_id=?", (user_id,))
+        row = cursor.fetchone()
+
+        # 如果存在数据，则打印
+        if row is not None:
+            doc = {}
+            for i, column_name in enumerate(cursor.description):
+                doc[column_name[0]] = row[i]
+            for k in ['last_update_time']:
+                if doc[k]:
+                    doc[k] = try_parse_datetime(doc[k])
+            return doc
+        else:
+            return None
+
+def upsert_user_kimi_token(user_id,access_token, refresh_token,last_update_time):
+    table_name = SQL_KIMI_TOKEN_TABLE
+    doc = {'user_id':user_id, 'access_token':access_token, 'refresh_token':refresh_token, 'last_update_time':last_update_time}
+    # 提取 doc 字典中的字段名和对应的值
+    field_names = ', '.join(doc.keys())
+    placeholders = ', '.join('?' for _ in doc.keys())
+    update_fields = ', '.join(f"{key} = excluded.{key}" for key in doc.keys() if key != 'user_id')
+    # 构建动态SQL upsert语句
+    sql = f"""
+    INSERT INTO {table_name} ({field_names})
+    VALUES ({placeholders})
+    ON CONFLICT(user_id) DO UPDATE SET {update_fields};
+    """
+
+    with sqlite3.connect(SQL_DB_NAME) as conn:
+        cursor = conn.cursor()
+        cursor.execute(sql, list(doc.values()))
+        conn.commit()
+
 if __name__ == '__main__':
     a = get_need_push_users()
     print(a)
