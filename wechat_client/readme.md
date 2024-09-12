@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 ```
 ZHIPU_KEY=你的智谱申请的key
-WECHAT_SERVER=你的微信服务器地址
+WECHAT_SERVER=你的微信服务器地址，比如http://127.0.0.1:8000
 SUPER_USER=你可以接受系统消息的微信号，不是部署成机器人的微信号
 TG_USER_PWD=天工搜索的账号和密码，支持联网搜索获取答案，如果有多个请用,分割，账号密码使用:号分割，如user1:pwd1,user2:pwd2
 ```
