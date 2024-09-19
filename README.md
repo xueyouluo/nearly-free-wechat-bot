@@ -34,7 +34,7 @@
 
 另外chromadb和ntchat之间有点冲突，确保先import chromadb再引用ntchat。
 
-其他就参考[服务端配置](./wechat_server/readme.md)的内容。
+其他就参考[服务端配置](./wechat_client/readme.md)的内容。
 
 启动服务后，发个消息给你的机器人试试吧。
 
