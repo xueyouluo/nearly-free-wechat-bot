@@ -19,7 +19,7 @@ pip install -r requirments.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ## 配置环境变量
 新建一个.env文件（最好用notepad++或者vscode建，不然会保存会有问题）
 ```
-WECHAT_CALLBACK=这里写你的微信回调地址，比如http://127.0.0.1:8080/callback
+WECHAT_CALLBACK=这里写你的微信回调地址，比如http://127.0.0.1:8080/wechat_callback
 SUPER_USER=这里写一个管理员账号，可以为空，如果不知道，可以起了服务后给机器人的微信发个消息看看日志显示是什么账号
 CHROMEDRIVER_PATH=参考下文的selenium，这里写你的chromedriver路径，比如D:\chromedriver.exe，如果不需要selenium，可以不填
 ```
